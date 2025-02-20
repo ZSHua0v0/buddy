@@ -1,0 +1,23 @@
+:root {
+  --footer-bg-color: #ffffff;
+  --footer-text-color: #000;
+  --footer-padding: 1rem;
+  --footer-link-color: #ff6702;
+  --font-size-title: clamp(5rem, 10vw, 15rem);
+  --font-size-subtitle: clamp(1.5rem, 6vw, 4rem); /* 初始较大，逐步缩小 */
+  --font-size-subtitle2: clamp(2.5rem, 6vw, 6rem); /* 初始较大，逐步缩小 */
+  --font-size-paragraph: clamp(1rem, 3vw, 1.2rem); /* 初始较大，逐步缩小 */
+  --footer-size-paragraph: clamp(0.6rem, 1vw, 1.2rem);
+  --button-font-size: clamp(1rem, 2vw, 1.2rem); /* 初始较大，逐步缩小 */
+  --min-width-leftBox: 50%;
+  --max-width-leftBox: 100%;
+  --min-width-rightBox: 0%;
+  --max-width-rightBox: 50%;
+  --dynamic-width-leftBox: clamp(var(--min-width-leftBox), 50vw, var(--max-width-leftBox));
+  --dynamic-width-rightBox: clamp(var(--min-width-rightBox), 50vw, var(--max-width-rightBox));
+
+  --font-size-title2: clamp(0.5rem, 5vw, 2rem); /* 动态计算标题的字体大小 */
+  --font-size-subtitle3: clamp(0.3rem, 3vw, 1.3rem); /* 动态计算副标题的字体大小 */
+  --font-size-paragraph2: clamp(0.2rem, 1vw, 1.25rem); /* 动态计算段落的字体大小 */
+  --font-size-title3: clamp(1.7rem, 5vw, 2rem)
+}

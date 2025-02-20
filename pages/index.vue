@@ -3,15 +3,17 @@
     <!-- Banner Section -->
     <div class="banner-view">
       <div class="banner-view-leftBox">
-      <div class="banner-view-title">Buddy’S</div>
-      <div class="banner-view-CloudTitle">Buddy‘s Cloud</div>
-      <div class="banner-view-CloudMassage">More than just your AWS cloud service reseller , but also a reliable partner for your cloud journey</div>
-      <div class="banner-view-buttons">
-        <button>进入首页</button> <button>联系我们</button>
-      </div>
+        <div class="banner-view-title">Buddy’S</div>
+        <div class="banner-view-CloudTitle">Buddy‘s Cloud</div>
+        <div class="banner-view-CloudMassage">Hey buddy!<br/>
+          Welcome back ,we have prepared a suitable AWS plan for you
+        </div>
+        <!--      <div class="banner-view-buttons">-->
+        <!--        <button>进入首页</button> <button>联系我们</button>-->
+        <!--      </div>-->
       </div>
       <div class="banner-view-rightBox">
-        <img src="" alt=""/>
+        <img src="../assets/helloIMG/StartHere.png" alt="buddy.com"/>
       </div>
     </div>
 
@@ -19,9 +21,11 @@
     <div class="welcomeMessage-view">
       <div class="welcomeMessage-content">
         <p class="welcomeMessage-content-title">Buddy’s Cloud</p>
-        <p class="welcomeMessage-content-text">More than just your AWS cloud service reseller, but also a reliable partner for your cloud journey</p>
+        <p class="welcomeMessage-content-text">More than just your AWS cloud service reseller, but also a reliable
+          partner for your cloud journey</p>
         <div class="welcomeMessage-content-buttons">
-          <button>进入首页</button> <button>联系我们</button>
+          <button @click="goToHomePage">进入首页</button>
+          <button @click="goToContactPage">联系我们</button>
         </div>
 
       </div>
@@ -38,8 +42,18 @@
 </template>
 
 <script>
+import '../assets/CSS/styles.css';
+
 export default {
   name: 'IndexPage',
+  methods: {
+    goToHomePage() {
+      this.$router.push(`/home`);
+    },
+    goToContactPage() {
+      this.$router.push(`/contactUs`);
+    }
+  }
 //   data() {
 //     return {
 //       showHomeAndroid: false,
@@ -90,24 +104,8 @@ export default {
 }
 </script>
 
-<style>
-:root {
-  --footer-bg-color: #ffffff;
-  --footer-text-color: #000;
-  --footer-padding: 1rem;
-  --footer-link-color: #ff6702;
-  --font-size-title: clamp(5rem, 10vw, 15rem);
-  --font-size-subtitle: clamp(2.5rem, 6vw, 4rem); /* 初始较大，逐步缩小 */
-  --font-size-paragraph: clamp(1.5rem, 3vw, 1.2rem); /* 初始较大，逐步缩小 */
-  --footer-size-paragraph: clamp(0.5rem, 1vw, 1.2rem);
-  --button-font-size: clamp(0.5rem, 2vw, 1.2rem); /* 初始较大，逐步缩小 */
-  --min-width-leftBox: 50%;
-  --max-width-leftBox: 100%;
-  --min-width-rightBox: 0%;
-  --max-width-rightBox: 50%;
-  --dynamic-width-leftBox: clamp(var(--min-width-leftBox), 50vw, var(--max-width-leftBox));
-  --dynamic-width-rightBox: clamp(var(--min-width-rightBox), 50vw, var(--max-width-rightBox));
-}
+<style scoped>
+
 
 /* Banner Section */
 .banner-view {
@@ -117,15 +115,21 @@ export default {
   color: white;
   padding: 0 5rem;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
+  z-index: 1;
 }
 
 .banner-view-rightBox {
-  width: var(--dynamic-width-rightBox);; /* 使用 root 中的动态宽度 */
+  width: var(--dynamic-width-rightBox); /* 使用 root 中的动态宽度 */
   transition: width 0.5s ease; /* 平滑过渡 */
-  display: flex;
-  justify-content: center;
+  z-index: 2;
+}
+
+.banner-view-rightBox img {
+  width: 100%;
+  height: var(--dynamic-width-rightBox);
+  margin: 0 auto;
 }
 
 .banner-view-leftBox {
@@ -203,7 +207,7 @@ export default {
 .welcomeMessage-content-buttons button {
   background-color: #ff6702;
   text-align: center;
-  width: 40%;
+  width: 50%;
   border-radius: 10px;
   padding: 5px;
   border: none;
@@ -244,14 +248,49 @@ export default {
 .footer a:hover {
   text-decoration: underline;
 }
+
 /* 当页面宽度小于 800px 时，动态调整宽度 */
 @media (max-width: 800px) {
+  .banner-view {
+    display: block;
+    z-index: 1;
+    padding: 1rem;
+  }
+
   .banner-view-leftBox {
-    width: 100%;  /* 当宽度小于 800px 时，左边盒子宽度变为100% */
+    width: 100%; /* 当宽度小于 800px 时，左边盒子宽度变为100% */
+    position: relative;
+  }
+
+  .banner-view-CloudMassage {
+    width: 90%;
   }
 
   .banner-view-rightBox {
-    width: 0%;  /* 当宽度小于 800px 时，右边盒子宽度变为0% */
+    width: 90%;
+    z-index: 2;
+    margin: 0 auto;
+  }
+
+  .welcomeMessage-content-buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 50%;
+    padding: 0 2%;
+  }
+
+  .welcomeMessage-view {
+    width: 100%;
+    height: 25vh;
+    background-color: #ffffff;
+    color: #000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 }
 </style>
